@@ -1,14 +1,13 @@
 <!--  -->
 <template>
-  <div>
-    home
-  </div>
+  <div>sub-name:{{chineseName}}</div>
 </template>
 
 <script>
 export default {
-  name: 'home',
+  name: 'homeSub',
   components: {},
+  inject: ['chineseName'],
   data () {
     return {
     }

@@ -1,27 +1,88 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Router from 'vue-router'
+import layout from '@/layout'
+Vue.use(Router)
 
-Vue.use(VueRouter)
-
-const routes = [
+export const constRoutes = [
   {
-    path: '/',
-    name: 'home',
-    component: Home
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/login.vue'),
+    hidden: true
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/',
+    component: layout,
+    redirect: '/home',
+    meta: {
+      title: 'home',
+      icon: 'qq'
+    },
+    children: [
+      {
+        path: 'home',
+        component: () => import('@/views/home.vue'),
+        meta: {
+          title: 'homeIndex',
+          icon: 'qq'
+        }
+      }
+    ]
   }
 ]
 
-const router = new VueRouter({
-  routes
-})
+export const asyncRoutes = [
+  {
+    path: '/about',
+    component: layout,
+    name: 'about',
+    redirect: '/about/index',
+    meta: { icon: 'wx', title: '用户中心' },
+    children: [
+      {
+        path: 'index',
+        name: 'aboutIndex',
+        component: () => import('@/views/about.vue'),
+        meta: {
+          title: 'index',
+          icon: 'qq',
+          roles: ['admin', 'editor']
+        }
+      },
+      {
+        path: 'test',
+        name: 'test',
+        component: () => import('@/views/test.vue'),
+        meta: {
+          title: 'test',
+          icon: 'qq',
+          roles: ['admin', 'editor']
+        }
+      },
+      {
+        path: 'lesson1',
+        name: 'lesson1',
+        component: () => import('@/views/lesson1.vue'),
+        meta: {
+          title: 'lesson1',
+          icon: 'qq'
+        }
+      },
+      {
+        path: 'lesson2',
+        name: 'lesson2',
+        component: () => import('@/views/lesson2.vue'),
+        meta: {
+          title: 'lesson2',
+          icon: 'qq'
+        }
+      }
+    ]
+  }
+]
 
-export default router
+export default new Router({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes: constRoutes
+})
