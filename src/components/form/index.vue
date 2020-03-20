@@ -1,29 +1,35 @@
 <!--  -->
 <template>
   <div>
-    <KForm :model="model" :rules="rules" ref="loginForm">
-      <KFormItem label="用户名" prop="name">
-        <KInput v-model="model.name" placeholder="请输入用户名"></KInput>
-      </KFormItem>
-      <KFormItem label="密码" prop="pwd">
-        <KInput v-model="model.pwd" type="password"></KInput>
-      </KFormItem>
-      <KFormItem>
+    <TForm :model="model"
+           :rules="rules"
+           ref="loginForm">
+      <TFormItem label="用户名"
+                 prop="name">
+        <KInput v-model="model.name"
+                placeholder="请输入用户名"></KInput>
+      </TFormItem>
+      <TFormItem label="密码"
+                 prop="pwd">
+        <KInput v-model="model.pwd"
+                type="password"></KInput>
+      </TFormItem>
+      <TFormItem>
         <button @click="onLogin">提交</button>
-      </KFormItem>
-    </KForm>
+      </TFormItem>
+    </TForm>
     {{model}}
   </div>
 </template>
 
 <script>
 import KInput from './KInput'
-import KFormItem from './KFormItem'
-import KForm from './KForm'
+import TFormItem from './TFormItem'
+import TForm from './TForm'
 import notice from './notice'
 export default {
   name: '',
-  components: { KInput, KFormItem, KForm },
+  components: { KInput, TFormItem, TForm },
   data () {
     return {
       model: {
@@ -55,9 +61,9 @@ export default {
     }
   },
   watch: {},
-  created () {},
-  mounted () {},
-  destroyed () {}
+  created () { },
+  mounted () { },
+  destroyed () { }
 }
 
 </script>

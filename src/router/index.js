@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import layout from '@/layout'
+// import layout from '@/layout'
 Vue.use(Router)
 
 export const constRoutes = [
@@ -8,73 +8,72 @@ export const constRoutes = [
     path: '/login',
     name: 'login',
     component: () => import('@/views/login.vue'),
-    hidden: true
+    hidden: true,
+    meta: {
+      isHideLayout: true
+    }
   },
   {
+    hidden: true,
     path: '/',
-    component: layout,
-    redirect: '/home',
+    name: 'home',
+    component: () => import('@/views/home.vue'),
     meta: {
-      title: 'home',
-      icon: 'qq'
-    },
-    children: [
-      {
-        path: 'home',
-        component: () => import('@/views/home.vue'),
-        meta: {
-          title: 'homeIndex',
-          icon: 'qq'
-        }
-      }
-    ]
+      isHideLayout: true
+    }
   }
 ]
 
 export const asyncRoutes = [
   {
-    path: '/about',
-    component: layout,
-    name: 'about',
-    redirect: '/about/index',
-    meta: { icon: 'wx', title: '用户中心' },
+    name: 'chart',
+    path: '/chart',
+    component: () => import('@/views/chart'),
+    meta: { icon: 'wx', title: '图表', roles: ['admin', 'editor'] }
+  },
+  {
+    name: 'createForm',
+    path: '/createForm',
+    component: () => import('@/views/createForm'),
+    meta: { icon: 'wx', title: '表单', roles: ['admin', 'editor'] }
+  },
+  {
+    name: 'table',
+    path: '/table',
+    component: () => import('@/views/table'),
+    meta: { icon: 'wx', title: 'table', roles: ['admin', 'editor'] }
+  },
+  {
+    name: 'control',
+    path: '/control',
+    component: () => import('@/views/control'),
+    meta: { icon: 'wx', title: '权限控制', roles: ['admin', 'editor'] }
+  },
+  {
+    path: '/user',
+    name: 'user',
+    component: () => import('@/views/user/user.vue'),
+    redirect: '/user/info',
+    meta: { icon: 'wx', title: '用户中心', roles: ['admin'] },
     children: [
-      {
-        path: 'index',
-        name: 'aboutIndex',
-        component: () => import('@/views/about.vue'),
-        meta: {
-          title: 'index',
-          icon: 'qq',
-          roles: ['admin', 'editor']
-        }
-      },
-      {
-        path: 'test',
-        name: 'test',
-        component: () => import('@/views/test.vue'),
-        meta: {
-          title: 'test',
-          icon: 'qq',
-          roles: ['admin', 'editor']
-        }
-      },
       {
         path: 'lesson1',
         name: 'lesson1',
-        component: () => import('@/views/lesson1.vue'),
+        component: () => import('@/views/user/lesson1.vue'),
         meta: {
           title: 'lesson1',
-          icon: 'qq'
+          icon: 'qq',
+          roles: ['admin']
         }
       },
       {
         path: 'lesson2',
         name: 'lesson2',
-        component: () => import('@/views/lesson2.vue'),
+        component: () => import('@/views/user/lesson2.vue'),
         meta: {
           title: 'lesson2',
-          icon: 'qq'
+          icon: 'qq',
+          roles: ['admin']
         }
       }
     ]
@@ -82,7 +81,7 @@ export const asyncRoutes = [
 ]
 
 export default new Router({
-  mode: 'history',
+  // mode: 'history',
   base: process.env.BASE_URL,
   routes: constRoutes
 })

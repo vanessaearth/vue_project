@@ -1,0 +1,82 @@
+.step {
+  padding-bottom: $gap;
+}
+
+.pt0 {
+  padding-top: 0;
+}
+
+.step li {
+  float: left;
+  width: 30%;
+  text-align: center;
+  margin-top: 15px;
+  position: relative;
+
+  &:last-child .step-line {
+    height: 0;
+  }
+}
+
+.large-step li {
+  width: 49%;
+}
+
+.step-line {
+  position: absolute;
+  background: $border-color-light;
+  height: 2px;
+  left: 50%;
+  right: -50%;
+}
+
+.step-head {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  margin: 0 auto;
+  margin-left: -13px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border: 1px solid $bg-color;
+  color: $black3;
+  background: $white;
+  cursor: pointer;
+}
+
+.step-main {
+  padding-top: 20px;
+  color: $black3;
+  // color: $font-color-light;
+}
+
+.is-current {
+  .step-head {
+    border: 1px solid $primary-color;
+    background-color: $primary-color;
+    color: $white;
+  }
+
+  .step-main {
+    color: $font-color-base;
+  }
+}
+
+.is-finish {
+  .step-head {
+    border-color: $primary-color;
+    color: $primary-color;
+  }
+
+  .step-line {
+    background: $primary-color;
+  }
+
+  .step-main {
+    color: $font-color-base;
+  }
+}

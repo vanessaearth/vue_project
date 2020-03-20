@@ -1,0 +1,230 @@
+.el-table--border th,
+.el-table--border td {
+  border-right: 2px dashed transparent;
+}
+
+.el-table-border {
+  border-radius: 6px;
+}
+
+tr:hover {
+  th {
+    border-color: #f0f0f0;
+  }
+}
+
+.el-table__row {
+  .cell {
+    white-space: nowrap;
+  }
+}
+
+.el-table tr.light-line {
+  background: $green-light9;
+}
+
+.el-table tr.light-line-blue {
+  background: $blue-light9;
+}
+
+.table-template {
+  &.el-table--border {
+    border: none;
+  }
+
+  .img-box {
+    // margin: 0 auto;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: #f5f5f5;
+
+    img {
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .img-box {
+    width: 40px;
+    height: 40px;
+  }
+
+  // .el-input--mini,
+  // .el-select {
+  //   display: none;
+  // }
+
+
+
+  .edit {
+
+    .icon,
+    .td-name {
+      display: none;
+    }
+
+    // .el-input--mini,
+    // .el-select {
+    //   display: inline-block;
+    // }
+  }
+
+  .ic-edit,
+  .ic-copy {
+    margin-top: 6px;
+    float: right;
+    visibility: hidden;
+    cursor: pointer;
+  }
+
+  .icon-edit {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    // background: url('../../assets/img/icon/edit.png') no-repeat 0 0;
+    // background-size: contain;
+    visibility: hidden;
+    cursor: pointer;
+  }
+
+  .td-name {
+    margin-right: 20px;
+
+    .icon-box-name {
+      width: 30px;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .icon,
+    span {
+      margin-left: 5px;
+      line-height: 23px;
+      vertical-align: top;
+    }
+  }
+
+  tr:hover {
+    .icon {
+      visibility: visible;
+    }
+  }
+
+  .el-table__expand-icon {
+    // visibility: hidden;
+    display: none;
+  }
+}
+
+.short-input {
+  width: 250px !important;
+}
+
+// 加上显示不出来拖动列框到border
+// .el-table--border td,
+// .el-table--border th {
+//   border-right: none;
+// }
+.el-table th {
+  background: #fafafa;
+  color: #706d69;
+}
+
+.table-box {
+  .el-table--border {
+    border: none;
+  }
+
+  .el-table td:first-child,
+  .el-table th:first-child {
+    padding-left: $gap-uac;
+  }
+
+  .el-table td:last-child,
+  .el-table th.last-th {
+    padding-right: 5px;
+  }
+
+  .el-table--border th:first-child .cell,
+  .el-table--border td:first-child .cell {
+    padding-left: 0;
+  }
+
+}
+
+.el-table {
+
+  .caret-wrapper {
+    width: 14px;
+    height: 21px;
+  }
+
+  .sort-caret {
+    left: 2px;
+  }
+
+  .sort-caret.ascending {
+    top: -1px;
+  }
+
+  .sort-caret.descending {
+    bottom: 0;
+  }
+}
+
+.app-info {
+  vertical-align: top;
+
+  .app-icon {
+    float: left;
+    width: 40px;
+    height: 40px;
+    border-radius: $border-radius-default;
+  }
+
+  .app-txt {
+
+    .app-title {
+      padding-left: 10px;
+      line-height: 30px;
+      height: 30px;
+    }
+
+    .app-pkg {
+      padding-left: 10px;
+      font-size: 12px;
+      line-height: 20px;
+      color: #9b9b9b;
+    }
+  }
+}
+
+.icon-box-name {
+  width: 30px;
+  display: inline-block;
+
+  .icon {
+    vertical-align: top;
+  }
+}
+
+.v-align-middle {
+  vertical-align: middle;
+}
+
+.fixed-box {
+  position: fixed;
+  top: 56px;
+  left: 10px;
+  right: 10px;
+  z-index: 999;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}

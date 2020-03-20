@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-  <div>
+  <div class="add-box">
     <h2>login</h2>
     <div>
       <input type="text"
@@ -26,7 +26,7 @@ export default {
       this.$store.dispatch('user/login', { username: this.username })
         .then(() => {
           this.$router.push({
-            path: this.$route.query.redirect || '/'
+            path: this.$route.query.redirect || '/index'
           })
         }).catch(err => {
           console.log(err)
@@ -41,4 +41,9 @@ export default {
 
 </script>
 <style lang='scss' scoped>
+  .add-box {
+    text-align: center;
+    padding-top: 100px;
+    min-height: 600px;
+  }
 </style>

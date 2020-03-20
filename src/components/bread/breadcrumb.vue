@@ -41,7 +41,7 @@ export default {
         matched = [
           {
             path: '/',
-            redirect: '/home',
+            redirect: '/index',
             meta: {
               title: '首页'
 
