@@ -7,7 +7,7 @@ function resolve (dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
-  publicPath: '/demo',
+  // publicPath: '/demo',
   // 多入口文件配置
   // pages: {
   //   index: {
@@ -20,6 +20,15 @@ module.exports = {
   // },
   devServer: {
     port: port
+    // proxy: {
+    //   [process.env.VUE_APP_BASE_API]: {
+    //     target: 'http://0.0.0.0:7300'
+    //     // changeOrigin: true,
+    //     // pathRewrite: {
+    //     //   ['^' + process.env.VUE_APP_BASE_API]: '/mock/5e7d6ad83726895821d1107f/api'
+    //     // }
+    //   }
+    // }
     // before: app => {
     //   app.use(bodyParse.json())
     //   // url参数

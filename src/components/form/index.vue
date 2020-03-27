@@ -6,13 +6,13 @@
            ref="loginForm">
       <TFormItem label="用户名"
                  prop="name">
-        <KInput v-model="model.name"
-                placeholder="请输入用户名"></KInput>
+        <TInput v-model="model.name"
+                placeholder="请输入用户名"></TInput>
       </TFormItem>
       <TFormItem label="密码"
                  prop="pwd">
-        <KInput v-model="model.pwd"
-                type="password"></KInput>
+        <TInput v-model="model.pwd"
+                type="password"></TInput>
       </TFormItem>
       <TFormItem>
         <button @click="onLogin">提交</button>
@@ -23,13 +23,13 @@
 </template>
 
 <script>
-import KInput from './KInput'
+import TInput from './TInput'
 import TFormItem from './TFormItem'
 import TForm from './TForm'
 import notice from './notice'
 export default {
   name: '',
-  components: { KInput, TFormItem, TForm },
+  components: { TInput, TFormItem, TForm },
   data () {
     return {
       model: {

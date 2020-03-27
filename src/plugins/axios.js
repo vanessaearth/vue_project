@@ -3,8 +3,9 @@ import axios from 'axios'
 import { Message, MessageBox } from 'element-ui'
 
 // axios.defaults.baseURL = process.env.baseUrl // 配置接口地址
+console.log(process.env.VUE_APP_BASE_API)
 let config = {
-  baseURL: process.env.baseUrl
+  baseURL: process.env.VUE_APP_BASE_API
   // onUploadProgress: p => { return 100 * (p.loaded / p.total) }
   // headers: {
   //   token: '23'
@@ -13,6 +14,11 @@ let config = {
 const _axios = axios.create(config)
 // POST传参序列化(添加请求拦截器)
 _axios.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token')
+  if (token) {
+    // 设置令牌请求头
+    config.headers['Authorization'] = 'aha ' + token
+  }
   return config
 }, (error) => {
   return Promise.reject(error)

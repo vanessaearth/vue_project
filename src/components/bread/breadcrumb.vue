@@ -41,10 +41,8 @@ export default {
         matched = [
           {
             path: '/',
-            redirect: '/index',
             meta: {
               title: '首页'
-
             }
           }
         ].concat(matched)

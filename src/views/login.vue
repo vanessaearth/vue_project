@@ -26,7 +26,7 @@ export default {
       this.$store.dispatch('user/login', { username: this.username })
         .then(() => {
           this.$router.push({
-            path: this.$route.query.redirect || '/index'
+            path: this.$route.query.redirect || '/'
           })
         }).catch(err => {
           console.log(err)

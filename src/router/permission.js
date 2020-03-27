@@ -7,7 +7,7 @@ router.beforeEach(async (to, from, next) => {
   const hasToken = localStorage.getItem('token')
   if (hasToken) {
     if (to.path === '/login') {
-      next({ path: '/index' })
+      next({ path: '/' })
     } else {
       const hasRoles = store.state.user.roles && store.state.user.roles.length > 0
       if (hasRoles) {

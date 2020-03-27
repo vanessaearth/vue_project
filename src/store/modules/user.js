@@ -1,3 +1,4 @@
+import Vue from 'vue'
 const state = {
   token: localStorage.getItem('token'),
   roles: []
@@ -14,24 +15,38 @@ const actions = {
   login ({ commit }, userInfo) {
     const { username } = userInfo
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (username === 'admin' || username === 'editor') {
+      Vue.axios.post('/user/login', { username: username }).then(res => {
+        if (res.username === 'admin' || res.username === 'editor') {
           commit('SET_TOKEN', username)
           localStorage.setItem('token', username)
           resolve()
         } else {
           reject('用户名密码错误') //eslint-disable-line
         }
-      }, 1000)
+      })
+      // setTimeout(() => {
+      //   if (username === 'admin' || username === 'editor') {
+      //     commit('SET_TOKEN', username)
+      //     localStorage.setItem('token', username)
+      //     resolve()
+      //   } else {
+      //     reject('用户名密码错误') //eslint-disable-line
+      //   }
+      // }, 1000)
     })
   },
   getInfo ({ commit, state }) {
     return new Promise(resolve => {
-      setTimeout(() => {
-        const roles = state.token === 'admin' ? ['admin'] : ['editor']
+      Vue.axios.get('/user/info').then(res => {
+        const roles = res.roles
         commit('SET_ROLES', roles)
         resolve(roles)
-      }, 1000)
+      })
+      // setTimeout(() => {
+      //   const roles = state.token === 'admin' ? ['admin'] : ['editor']
+      //   commit('SET_ROLES', roles)
+      //   resolve(roles)
+      // }, 1000)
     })
   }
 }

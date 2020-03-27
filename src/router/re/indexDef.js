@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueRouter from './KVueRouter'
+import VueRouter from './TVueRouter'
 import lesson1 from '../views/lesson1.vue'
 
 Vue.use(VueRouter)

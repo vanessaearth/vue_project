@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import Bus from './plugins/bus'
-import create from './utils/create'
+import create from './utils/re/create'
 import './router/permission.js'
 import vp from './directive/permission.js'
 import './plugins/icons/index'
@@ -11,7 +11,7 @@ import './plugins/axios'
 import './plugins/element.js'
 import './assets/scss/common.scss'
 if (process.env.NODE_ENV !== 'production') {
-  require('./mock/index.js')
+  // require('./mock/index.js')
   window.clog = window.console.log
 } else {
   window.clog = () => { }
