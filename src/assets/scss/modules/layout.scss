@@ -1,0 +1,25 @@
+  .container-layout {
+    width: 1280px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .part-box {
+    .part-title {
+      font-weight: 700;
+      margin-top: $gap-sm;
+    }
+
+    .part-ul {
+      padding-left: 20px;
+
+      .part-ul-title {
+        font-weight: 700;
+        font-size: 16px;
+        padding: $gap-sm 0;
+      }
+    }
+  }

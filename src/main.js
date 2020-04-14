@@ -11,9 +11,10 @@ import './plugins/axios'
 import './plugins/element.js'
 import './assets/scss/common.scss'
 if (process.env.NODE_ENV !== 'production') {
-  // require('./mock/index.js')
+  require('./mock/index.js')
   window.clog = window.console.log
 } else {
+  require('./mock/index.js')
   window.clog = () => { }
 }
 

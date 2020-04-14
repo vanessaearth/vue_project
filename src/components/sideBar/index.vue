@@ -40,7 +40,7 @@ export default {
     variables () {
       return {
         menuText: '#bfcbd9',
-        menuActiveText: '#409EFF',
+        menuActiveText: 'teal',
         menuBg: '#304156'
       }
     }

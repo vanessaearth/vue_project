@@ -21,7 +21,7 @@ class KVueRouter {
     window.addEventListener('hashchange', this.onHashChange.bind(this))
   }
   onHashChange () {
-    console.log(window.location.hash)
+    clog(window.location.hash)
     this.app.current = window.location.hash.slice(1) || '/'
   }
   createRouteMap () {

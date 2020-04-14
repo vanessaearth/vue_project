@@ -8,7 +8,7 @@ const objConcat = (target, ...args) => {
     return target
   }
   for (let i = 0, len = args.length; i < len; i++) {
-    //         console.log(i, args[i]);
+    //         clog(i, args[i]);
     const _obj = args[i]
     for (let _key in _obj) {
       let _value = _obj[_key]

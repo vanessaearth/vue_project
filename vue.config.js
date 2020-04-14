@@ -1,12 +1,13 @@
 
 // import bodyParse from 'body-parse'
 const port = 9090
-const title = 'vue项目实战'
+const title = '欢迎来到我的博客站'
 const path = require('path')
 function resolve (dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
+  outputDir: process.env.VUE_APP_OUTPUT,
   // publicPath: '/demo',
   // 多入口文件配置
   // pages: {

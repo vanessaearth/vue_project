@@ -11,10 +11,10 @@ class Compiler {
     const childNodes = el.childNodes
     Array.from(childNodes).forEach(node => {
       if (this.isElement(node)) {
-        console.log('编译标签' + node.nodeName)
+        clog('编译标签' + node.nodeName)
         this.compileElement(node)
       } else if (this.isInter(node)) {
-        console.log('插值文本' + node.textContent)
+        clog('插值文本' + node.textContent)
         this.compileText(node)
       }
       // 递归子元素

@@ -11,9 +11,9 @@ const routes = [
     component: lesson1
   },
   {
-    path: '/lesson2',
-    name: 'lesson2',
-    component: () => import(/* webpackChunkName: "lesson2" */ '../views/lesson2.vue')
+    path: '/vuexDemo',
+    name: 'vuexDemo',
+    component: () => import(/* webpackChunkName: "vuexDemo" */ '../views/vuexDemo.vue')
   },
   {
     path: '/lesson3',

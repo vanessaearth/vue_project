@@ -29,7 +29,7 @@ export default {
   },
   created () {
     this.$parent.$on('hiBrother', () => {
-      console.log('来自兄弟的问候')
+      clog('来自兄弟的问候')
     })
   }
 }

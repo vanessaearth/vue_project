@@ -29,53 +29,74 @@ export const asyncRoutes = [
     name: 'chart',
     path: '/chart',
     component: () => import('@/views/chart'),
-    meta: { icon: 'wx', title: '图表', roles: ['admin', 'editor'] }
+    meta: { icon: 'chart', title: '图表', roles: ['admin', 'editor'] }
   },
   {
     name: 'createForm',
     path: '/createForm',
     component: () => import('@/views/createForm'),
-    meta: { icon: 'wx', title: '表单', roles: ['admin', 'editor'] }
+    meta: { icon: 'form', title: '表单', roles: ['admin', 'editor'] }
   },
   {
     name: 'table',
     path: '/table',
     component: () => import('@/views/table'),
-    meta: { icon: 'wx', title: 'table', roles: ['admin', 'editor'] }
+    meta: { icon: 'table', title: 'table', roles: ['admin', 'editor'] }
   },
   {
     name: 'control',
     path: '/control',
     component: () => import('@/views/control'),
-    meta: { icon: 'wx', title: '权限控制', roles: ['admin', 'editor'] }
+    meta: { icon: 'permission', title: '权限控制', roles: ['admin', 'editor'] }
+  },
+  {
+    path: '/jestDemo',
+    name: 'jestDemo',
+    component: () => import('@/views/jestDemo.vue'),
+    meta: {
+      title: 'Jest测试',
+      icon: 'jest',
+      roles: ['admin']
+    }
   },
   {
     path: '/user',
     name: 'user',
     component: () => import('@/views/user/user.vue'),
     redirect: '/user/info',
-    meta: { icon: 'wx', title: '用户中心', roles: ['admin'] },
+    meta: { icon: 'user', title: '用户中心', roles: ['admin'] },
     children: [
       {
-        path: 'lesson1',
-        name: 'lesson1',
-        component: () => import('@/views/user/lesson1.vue'),
+        path: 'com',
+        name: 'com',
+        component: () => import('@/views/user/com1.vue'),
         meta: {
-          title: 'lesson1',
-          icon: 'qq',
+          title: '组件',
+          icon: 'com',
           roles: ['admin']
         }
       },
       {
-        path: 'lesson2',
-        name: 'lesson2',
-        component: () => import('@/views/user/lesson2.vue'),
+        path: 'slotDemo',
+        name: 'slotDemo',
+        component: () => import('@/views/user/slotDemo.vue'),
         meta: {
-          title: 'lesson2',
-          icon: 'qq',
+          title: ' 插槽',
+          icon: 'slot',
+          roles: ['admin']
+        }
+      },
+      {
+        path: 'vuexDemo',
+        name: 'vuexDemo',
+        component: () => import('@/views/user/vuexDemo.vue'),
+        meta: {
+          title: 'vuex',
+          icon: 'vuex',
           roles: ['admin']
         }
       }
+
     ]
   }
 ]

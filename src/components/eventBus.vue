@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'lesson12',
+  name: 'eventBus',
   components: {},
   data () {
     return {
@@ -24,10 +24,10 @@ export default {
   watch: {},
   created () {
     this.$bus.$on('emitBus', () => {
-      console.log('$bus on emitBus')
+      clog('$bus on emitBus')
     })
     this.$parent.$on('handle1Btn', () => {
-      console.log('lesson22 监听on')
+      clog('eventBus 监听on')
       this.foo = '更新了'
     })
   },

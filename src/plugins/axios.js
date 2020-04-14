@@ -2,8 +2,6 @@ import Vue from 'vue'
 import axios from 'axios'
 import { Message, MessageBox } from 'element-ui'
 
-// axios.defaults.baseURL = process.env.baseUrl // 配置接口地址
-console.log(process.env.VUE_APP_BASE_API)
 let config = {
   baseURL: process.env.VUE_APP_BASE_API
   // onUploadProgress: p => { return 100 * (p.loaded / p.total) }

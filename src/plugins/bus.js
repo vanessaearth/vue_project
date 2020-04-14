@@ -8,8 +8,7 @@ export default class Bus {
   }
   $emit (name, args) {
     if (this.callBacks[name]) {
-      this.callBacks[name].forEach(cb =>
-        cb(args))
+      this.callBacks[name].forEach(cb => cb(args))
     }
   }
 }

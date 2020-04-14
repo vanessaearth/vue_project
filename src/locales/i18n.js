@@ -20,7 +20,7 @@ function loadLocaleMessages () {
 }
 let urlLanguage = utils.getIframeParam('uac')
 let language = urlLanguage || utils.getCookie('Language') || 'en'
-console.log('cookie:', utils.getCookie('Language'), 'language', language)
+clog('cookie:', utils.getCookie('Language'), 'language', language)
 
 if (language === 'zh_CN') {
   locale.use(zhCN)

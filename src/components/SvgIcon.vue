@@ -49,6 +49,7 @@ export default {
 </script>
 <style lang='scss' scoped>
   .icon-box {
+    margin-right: 10px;
     display: inline-block;
     vertical-align: top;
   }

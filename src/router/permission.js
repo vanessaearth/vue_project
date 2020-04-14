@@ -1,13 +1,13 @@
 import router from '.'
 import store from '../store'
-const whiteList = ['/login', '/home', '/']
+const whiteList = ['/login', '/']
 
 router.beforeEach(async (to, from, next) => {
   // to and from are both route objects. must call `next`.
   const hasToken = localStorage.getItem('token')
   if (hasToken) {
-    if (to.path === '/login') {
-      next({ path: '/' })
+    if (to.path === '/login' || to.path === '/') {
+      next({ path: '/chart' })
     } else {
       const hasRoles = store.state.user.roles && store.state.user.roles.length > 0
       if (hasRoles) {
@@ -15,9 +15,9 @@ router.beforeEach(async (to, from, next) => {
       } else {
         try {
           const roles = await store.dispatch('user/getInfo')
-          console.log(roles)
+          clog(roles)
           const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
-          console.log(accessRoutes)
+          clog(accessRoutes)
           router.addRoutes(accessRoutes)
           next({ ...to })
         } catch (error) {

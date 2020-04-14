@@ -1,19 +1,36 @@
 <!--  -->
 <template>
-  <div class="add-box">
-    <h2>login</h2>
-    <div>
-      <input type="text"
-             v-model="username">
-      <button @click="login">登录</button>
+  <div>
+    <headerLogo></headerLogo>
+    <div class="container-layout add-box gap">
+      <div class="fs32">
+        login
+
+      </div>
+      <div class="gap">
+
+        <el-input type="text"
+                  class="short-input"
+                  v-model="username" />
+        <div class="gap">
+          <el-button type="primary"
+                     @click="login">登录</el-button>
+        </div>
+        <div class="tip gap">
+          可以尝试使用admin或者editor这2个用户名登录，会分不同权限
+        </div>
+
+      </div>
     </div>
+
   </div>
 </template>
 
 <script>
+import headerLogo from '@/components/layout/headerLogo'
 export default {
   name: 'login',
-  components: {},
+  components: { headerLogo },
   data () {
     return {
       username: 'admin'
@@ -26,10 +43,10 @@ export default {
       this.$store.dispatch('user/login', { username: this.username })
         .then(() => {
           this.$router.push({
-            path: this.$route.query.redirect || '/'
+            path: this.$route.query.redirect || '/chart'
           })
         }).catch(err => {
-          console.log(err)
+          clog(err)
         })
     }
   },

@@ -11,7 +11,7 @@
         <div class="step-line"></div>
         <div class="step-head">
           <i v-if="lastStep>index"
-             class="el-step__icon-inner is-status ic-check"></i>
+             class="el-step__icon-inner is-status el-icon-check"></i>
           <span v-else>{{index+1}}</span>
         </div>
         <div class="step-main">{{item}}</div>
@@ -25,11 +25,13 @@
       <div v-show="step===0">
         <el-form-item label="活动名称"
                       prop="name">
-          <el-input v-model="ruleForm.name"></el-input>
+          <el-input v-model="ruleForm.name"
+                    class="short-input"></el-input>
         </el-form-item>
         <el-form-item label="活动区域"
                       prop="region">
           <el-select v-model="ruleForm.region"
+                     class="short-input"
                      placeholder="请选择活动区域">
             <el-option label="区域一"
                        value="shanghai"></el-option>
@@ -69,6 +71,7 @@
         <el-form-item label="活动形式"
                       prop="desc">
           <el-input type="textarea"
+                    class="short-input"
                     v-model="ruleForm.desc"></el-input>
         </el-form-item>
       </div>
@@ -161,7 +164,7 @@ export default {
         if (valid) {
           alert('submit!')
         } else {
-          console.log('error submit!!')
+          clog('error submit!!')
           return false
         }
       })
