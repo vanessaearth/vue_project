@@ -2,7 +2,7 @@
 <template>
   <div>
     <headerLogo></headerLogo>
-    <div class="container-layout add-box gap">
+    <div class="container-layout add-box layout">
       <div class="fs32">欢迎来到我的个人站</div>
       <div>
         这里是首页，无需登录，想查看更多,请试试登录吧

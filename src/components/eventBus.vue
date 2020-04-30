@@ -1,6 +1,7 @@
 <!--  -->
 <template>
   <div>
+    这个是eventBus
     {{foo}}
   </div>
 </template>

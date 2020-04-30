@@ -40,6 +40,11 @@ export default {
 </script>
 <style lang='scss' scoped>
   .header-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
     height: 40px;
     background: #fff;
     padding: 10px 20px;

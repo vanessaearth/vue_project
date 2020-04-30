@@ -2,7 +2,7 @@
 <template>
   <div>
     <headerLogo></headerLogo>
-    <div class="container-layout add-box gap">
+    <div class="container-layout add-box layout">
       <div class="fs32">
         login
 

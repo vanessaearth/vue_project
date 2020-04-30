@@ -1,6 +1,7 @@
 <!--  -->
 <template>
   <div>
+    这是com11
     <slot></slot>
     <div class="fs20">
       <slot name="content"

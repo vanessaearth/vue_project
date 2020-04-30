@@ -25,7 +25,7 @@ export default {
     handleEmit () {
       clog('com11 提交emit')
       this.$bus.$emit('emitBus')
-      this.$parent.$emit('handle1Btn')
+      // this.$parent.$emit('handle1Btn')
     }
   },
   watch: {},
