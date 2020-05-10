@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <h2>1、2sum,array=[1,2,3,4,5],sum=7</h2>
+        <div id="twoSum"></div>
+      </li>
+      <li>
+        <h2>2、fib(n),array=[1, 1, 2, 3, 5, 8],n=8,递归，加缓存，递推</h2>
+        <div id="fib"></div>
+      </li>
+      <li>
+        <h2>3、有效的括号</h2>
+        <div id="zhan"></div>
+      </li>
+      <li>
+        <h2>4、文件目录</h2>
+        <div id="fileCli"></div>
+      </li>
+    </ul>
+    <script src="./js/index.js"></script>
+    <!-- <script src="./js/linkNode.js"></script> -->
+    <script src="./js/206.js"></script>
+    <script src="./js/preOrder.js"></script>
+    <script src="./js/tree.js"></script>
+    <script>
+      let arr = [1, 2, 3, 4, 5]
+      let result = twoSum(arr, 7)
+      let twoSumId = document.getElementById('twoSum')
+      for (let i = 0; i < result.length; i++) {
+        twoSumId.innerHTML += result[i].num1 + ',' + result[i].num2 + '</br>'
+      }
+      // 2.fib(n)
+      let arr2 = [1, 1, 2, 3, 5, 8]
+      let fibId = document.getElementById('fib')
+      fib(arr2, 8)
+      fibId.innerHTML = arr2[8]
+
+      document.getElementById('zhan').innerHTML = zhan('(()(')
+      document.getElementById('fileCli').innerHTML = fileCli('/../')
+      //document.getElementById('fileCli').innerHTML = fileCli('/home/')
+      // document.getElementById('fileCli').innerHTML = fileCli(
+      //   '/a/../../b/../c//.//'
+      // )
+      document.getElementById('fileCli').innerHTML = fileCli(
+        '/a//b////c/d//././/..'
+      )
+    </script>
+  </body>
+</html>

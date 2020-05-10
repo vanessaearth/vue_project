@@ -1,0 +1,8 @@
+{
+  "extends": "eslint-config-egg",
+  "rules": {
+    "space-before-function-paren": 0,
+    "strict": [2, "never"],
+    "array-bracket-spacing": ["error", "never"]
+  }
+}
