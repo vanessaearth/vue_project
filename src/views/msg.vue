@@ -8,12 +8,17 @@
 -->
 <template>
   <div>
+    节流：每隔2秒发送一次请求
+    <input type="text"
+           @click="(k)=>remoteName(k,'campaign')">
     <button @click="showMsg">显示自定义弹框</button>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
+import { throttle } from '@/utils/modules/throttle.js'
+
 import { create } from '@/plugins/create.js'
 import createComp from '@/components/create.vue'
 Vue.prototype.$msg = (options) => {
@@ -26,11 +31,21 @@ export default {
   components: {},
   data () {
     return {
+      filterOption: {
+        campaignName: []
+      }
     }
   },
   props: {},
   computed: {},
   methods: {
+    remoteName: throttle(function (key, type) {
+      this.postRemote({ key, type })
+    }, 5000),
+    async postRemote ({ key, type }) {
+      const res = await this.$axios.post(`/${type}/sugName`, { key: key })
+      this.filterOption[type + 'Name'] = res
+    },
     showMsg () {
       this.$msg({
         title: 'aha,我是title',

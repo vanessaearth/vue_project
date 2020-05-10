@@ -32,6 +32,14 @@ export const asyncRoutes = [
     meta: { icon: 'file', title: '自定义弹窗插件', roles: ['admin', 'editor'] }
   },
   {
+    name: 'form',
+    path: '/form',
+    component: () => import(/* webpackChunkName: "formIndex" */'@/views/formIndex'),
+    meta: {
+      icon: '', title: '自定义form', roles: ['admin', 'editor']
+    }
+  },
+  {
     name: 'fileUpload',
     path: '/fileUpload',
     component: () => import(/* webpackChunkName: "fileUpload" */'@/views/fileUpload')
@@ -47,12 +55,12 @@ export const asyncRoutes = [
     component: () => import(/* webpackChunkName: "chart" */'@/views/chart'),
     meta: { icon: 'chart', title: '图表', roles: ['admin', 'editor'] }
   },
-  {
-    name: 'createForm',
-    path: '/createForm',
-    component: () => import(/* webpackChunkName: "createForm" */'@/views/createForm'),
-    meta: { icon: 'form', title: '表单', roles: ['admin', 'editor'] }
-  },
+  // {
+  //   name: 'createForm',
+  //   path: '/createForm',
+  //   component: () => import(/* webpackChunkName: "createForm" */'@/views/createForm'),
+  //   meta: { icon: 'form', title: '表单', roles: ['admin', 'editor'] }
+  // },
   {
     name: 'table',
     path: '/table',

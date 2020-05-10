@@ -8,6 +8,7 @@
 <script>
 export default {
   name: 'TForm',
+  componentName: 'TForm',
   components: {},
   provide () {
     return {
@@ -16,6 +17,7 @@ export default {
   },
   data () {
     return {
+      fileds: []
     }
   },
   props: {
@@ -34,16 +36,23 @@ export default {
       // 结果是promise数组
       let isTrue = true
       let isFalse = false
-      const tasks = this.$children
-        .filter(item => !!item.prop)
-        .map(item => item.validate())
+      // const tasks = this.$children
+      //   .filter(item => !!item.prop)
+      //   .map(item => item.validate())
+      const tasks = this.fileds.map(item => item.validate())
       Promise.all(tasks)
         .then(() => cb(isTrue))
         .catch(() => cb(isFalse))
     }
   },
   watch: {},
-  created () { },
+  created () {
+    this.$on('el.form.addField', (field) => {
+      if (field) {
+        this.fileds.push(field)
+      }
+    })
+  },
   mounted () { },
   destroyed () { }
 }

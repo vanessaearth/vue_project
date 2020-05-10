@@ -15,9 +15,9 @@ router.beforeEach(async (to, from, next) => {
       } else {
         try {
           const roles = await store.dispatch('user/getInfo')
-          clog(roles)
+          clog('roles:', roles)
           const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
-          clog(accessRoutes)
+          clog('accessRoutes', accessRoutes)
           router.addRoutes(accessRoutes)
           next({ ...to })
         } catch (error) {

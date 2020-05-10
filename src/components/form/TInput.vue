@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-  <div>
+  <div class="input-box">
     <input :type="type"
            :value="value"
            @input="onInput"
@@ -9,9 +9,11 @@
 </template>
 
 <script>
+import emitter from '@/mixins/emitter2.js'
 export default {
   name: 'TInput',
   inheritAttrs: false,
+  mixins: [emitter],
   components: {},
   data () {
     return {
@@ -33,7 +35,8 @@ export default {
       // 转发input事件
       this.$emit('input', e.target.value)
       // 通知校验
-      this.$parent.$emit('validate')
+      // this.$parent.$emit('validate')
+      this.dispatch('TFormItem', 'validate')
     }
   },
   watch: {},
@@ -44,4 +47,7 @@ export default {
 
 </script>
 <style lang='scss' scoped>
+  .input-box {
+    display: inline-block;
+  }
 </style>

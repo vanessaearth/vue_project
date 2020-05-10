@@ -7,18 +7,35 @@ class Store {
     this.state = new Vue({
       data: options.state
     })
-    this.mutations = options.mutations
-    this.actions = options.actions
+    this._mutations = options.mutations
+    this._actions = options.actions
+    this._getter = options.getter
     this.commit = this.commit.bind(this)
     this.dispatch = this.dispatch.bind(this)
+    // this.mapGetters = this.mapGetters.bind(this)
+  }
+  mapGetters (keys) {
+    const data = {}
+    keys.forEach(key => {
+      if (this._getter.hasOwnProperty(key)) {
+        data[key] = this._getter[key]
+      }
+    })
+    clog('mapGetters:', data)
+    return data
   }
   // 实现commit，可以修改option的数据
   commit (type, args) {
-    this.mutations[type](this.state, args)
+    let entry = this._mutations[type]
+    if (entry) {
+      this._mutations[type](this.state, args)
+    }
   }
   dispatch (type, args) {
-    const store = this
-    this.actions[type](store, args)
+    let entry = this._actions[type]
+    if (entry) {
+      this._actions[type](this, args)
+    }
   }
 }
 function install (_Vue) {
