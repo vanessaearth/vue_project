@@ -23,7 +23,7 @@ const actions = {
 export function filterAsyncRoutes (routes, roles) {
   const res = []
   routes.forEach(route => {
-    // 复制一份路由
+    // 复制一份路由，保证切换用户后，路由是最新的
     const tmp = { ...route }
     // 拥有访问权限
     if (hasPermission(roles, tmp)) {

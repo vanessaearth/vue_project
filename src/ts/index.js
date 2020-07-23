@@ -1,2 +1,2 @@
-var hello = "hello typescript";
-clog(hello);
+var hello = 'hello typescript'
+clog(hello)

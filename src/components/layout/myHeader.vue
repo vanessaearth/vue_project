@@ -34,7 +34,7 @@ export default {
       localStorage.removeItem('token')
       // reload可以清除vuex数据
       window.location.reload()
-      window.location.href = '/'
+      window.location.href = '/start'
       // 使用路由方式需要清空vuex中数据
       // this.$router.push({
       //   path: '/login'

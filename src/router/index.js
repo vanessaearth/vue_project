@@ -2,12 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // import layout from '@/layout'
 Vue.use(Router)
-
+// 通用页面直接访问
 export const constRoutes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import(/* webpackChunkName: "login" */'@/views/login.vue'),
+    component: () => import(/* webpackChun32kName: "login" */'@/views/login.vue'),
     hidden: true,
     meta: {
       isHideLayout: true
@@ -23,20 +23,26 @@ export const constRoutes = [
     }
   }
 ]
-
+// 特定角色的可查看的页面
 export const asyncRoutes = [
   {
     name: 'msg',
     path: '/msg',
     component: () => import(/* webpackChunkName: "msg" */'@/views/msg'),
-    meta: { icon: 'file', title: '自定义弹窗插件', roles: ['admin', 'editor'] }
+    meta: { icon: 'com', title: '自定义弹窗插件', roles: ['admin', 'editor'] }
+  },
+  {
+    name: 'map',
+    path: '/map',
+    component: () => import(/* webpackChunkName: "map" */'@/views/map'),
+    meta: { icon: 'slot', title: '地图', roles: ['admin', 'editor'] }
   },
   {
     name: 'form',
     path: '/form',
     component: () => import(/* webpackChunkName: "formIndex" */'@/views/formIndex'),
     meta: {
-      icon: '', title: '自定义form', roles: ['admin', 'editor']
+      icon: 'form', title: '自定义form', roles: ['admin', 'editor']
     }
   },
   {
@@ -79,7 +85,7 @@ export const asyncRoutes = [
     component: () => import(/* webpackChunkName: "jestDemo" */'@/views/jestDemo.vue'),
     meta: {
       title: 'Jest测试',
-      icon: 'jest',
+      icon: 'slot',
       roles: ['admin']
     }
   },

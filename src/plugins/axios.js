@@ -49,11 +49,11 @@ _axios.interceptors.response.use((res) => {
       let url, CAS
       if (window.location.port === '') {
         CAS = process.env.VUE_APP_CAS_PROD
-      } else if (window.location.port === '8885' || window.location.port === '8680') {
+      } else if (window.location.port === '7777' || window.location.port === '8888') {
         CAS = process.env.VUE_APP_CAS_DEV
-      } else if (window.location.port === '8880') {
+      } else if (window.location.port === '6666') {
         CAS = process.env.VUE_APP_CAS_TEST
-      } else if (window.location.port === '8999') {
+      } else if (window.location.port === '9999') {
         CAS = process.env.VUE_APP_CAS_SHAHE
       }
       url = CAS + '/cas/login?service=' + (window.location.href)

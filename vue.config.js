@@ -3,10 +3,10 @@
 const port = 9090
 const title = '欢迎来到我的博客站'
 const path = require('path')
-function resolve (dir) {
-  return path.join(__dirname, dir)
-}
+
+console.log('foo:',process.env.foo)
 module.exports = {
+  publicPath: '/start',
   assetsDir: 'static',
   outputDir: process.env.VUE_APP_OUTPUT,
   // publicPath: '/demo',
@@ -45,17 +45,25 @@ module.exports = {
       }
     }
   },
+  // 配置webpack
   configureWebpack: {
-    name: title
+    resolve: {
+      alias: {
+        '@': path.join(__dirname, 'src')
+      }
+    },
+    name: process.env.NODE_ENV === 'development' ? '测试' : '正式'
   },
   chainWebpack (config) {
     // 设置svgIcon的loader
+    // 1.默认的svg规则排除自定义的svg目录
     config.module.rule('svg')
-      .exclude.add(resolve('src/plugins/icons')).end()
+      .exclude.add(path.resolve(__dirname, 'src/icons')).end()
+    // 2.新增icon规则只包含icon目录
     config.module.rule('icons')
-      .test(/\.svg$/)
-      .include.add(resolve('src/plugins/icons')).end()
-      .use('svg-sprite-loader')
+      .test(/\.svg$/)// 规则
+      .include.add(path.resolve(__dirname, 'src/icons')).end()
+      .use('svg-sprite-loader')// 指定loader
       .loader('svg-sprite-loader')
       .options({ symbolId: 'icon-[name]' }).end()
   }

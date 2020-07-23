@@ -21,6 +21,7 @@
 import mySider from '@/components/layout/mySider.vue'
 import myHeader from '@/components/layout/myHeader.vue'
 import { mapGetters } from 'vuex'
+console.log('env:', process.env.VUE_APP_DONE)
 export default {
   name: 'app',
   components: { mySider, myHeader },

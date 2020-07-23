@@ -1,23 +1,16 @@
+
 export default {
-  login: {
-    header: {
-      code: 0,
-      msg: ''
-    },
-    body: {
-      username: 'editor'
-    }
-  },
   loginAdmin: {
     header: {
       code: 0,
       msg: ''
     },
     body: {
-      username: 'admin'
+      username: 'admin',
+      roles: ['admin']
     }
   },
-  user: {
+  loginEdit: {
     header: {
       code: 0,
       msg: ''
