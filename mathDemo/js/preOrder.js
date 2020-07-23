@@ -22,4 +22,4 @@ function preOrder (root) {
   }
   return result
 };
-console.log('preOrder', preOrder([1, 2, 3, 4, 5, 6, 7]))
+clog('preOrder', preOrder([1, 2, 3, 4, 5, 6, 7]))

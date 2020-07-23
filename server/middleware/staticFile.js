@@ -14,11 +14,11 @@ function staticFile (url, dir) {
       let filePath = path.join(dir, requestPath.substring(url.length))
 
       if (await fs.exists(filePath)) {
-        // console.log('有这个文件')
+        // clog('有这个文件')
         ctx.response.type = mime.getType(requestPath)
         ctx.response.body = await fs.readFile(filePath)
       } else {
-        console.log('没有这个文件')
+        clog('没有这个文件')
       }
     } else {
       await next()

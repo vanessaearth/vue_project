@@ -11,7 +11,9 @@
     节流：每隔2秒发送一次请求
     <input type="text"
            @click="(k)=>remoteName(k,'campaign')">
-    <button @click="showMsg">显示自定义弹框</button>
+   <div style="margin-top:30px">
+     <button @click="showMsg">显示自定义弹框</button>
+   </div>
   </div>
 </template>
 
@@ -20,7 +22,7 @@ import Vue from 'vue'
 import { throttle } from '@/utils/modules/throttle.js'
 
 import { create } from '@/plugins/create.js'
-import createComp from '@/components/create.vue'
+import createComp from '@/components/form/notice.vue'
 Vue.prototype.$msg = (options) => {
   const comp = create(createComp, options)
   comp.show()
@@ -49,7 +51,7 @@ export default {
     showMsg () {
       this.$msg({
         title: 'aha,我是title',
-        msg: '我是正文',
+        message: '我是正文',
         duration: 1000
       })
     }

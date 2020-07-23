@@ -21,7 +21,6 @@
 import mySider from '@/components/layout/mySider.vue'
 import myHeader from '@/components/layout/myHeader.vue'
 import { mapGetters } from 'vuex'
-console.log('env:', process.env.VUE_APP_DONE)
 export default {
   name: 'app',
   components: { mySider, myHeader },
@@ -39,21 +38,21 @@ export default {
 </script>
 
 <style lang="scss">
-  .main {
-    padding-left: 60px;
-    transition: all 0.5s;
-    overflow: hidden;
-  }
-  .show-side .main {
-    padding-left: $side-width;
-  }
-  .main-container {
-    min-height: 600px;
-    border-radius: 5px;
-    margin: $gap;
-  }
-  .show-side .main.guide {
-    padding: 0;
-    margin: 0;
-  }
+.main {
+  padding-left: 60px;
+  transition: all 0.5s;
+  overflow: hidden;
+}
+.show-side .main {
+  padding-left: $side-width;
+}
+.main-container {
+  min-height: 600px;
+  border-radius: 5px;
+  margin: $gap;
+}
+.show-side .main.guide {
+  padding: 0;
+  margin: 0;
+}
 </style>

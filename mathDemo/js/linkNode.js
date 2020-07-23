@@ -47,7 +47,7 @@ class LinkNodeList {
       ret.push(cur.element)
       cur = cur.next
     }
-    console.log(ret.join('==>'))
+    clog(ret.join('==>'))
     return ret.join('==>')
   }
 }

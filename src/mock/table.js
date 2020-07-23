@@ -51,13 +51,13 @@ export default {
       address: 'new Address'
     }
   },
-  download: {
+  downloadTable: {
     header: {
       code: 0,
-      msg: 'OK'
+      msg: ''
     },
     body: {
-      msg: ''
+      list: ['tom', 'jerry']
     }
   }
 }

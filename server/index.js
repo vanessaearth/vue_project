@@ -10,9 +10,9 @@ const app = new Koa()
 app.use(async (ctx, next) => {
   // const user = await User.findByPk(1)
   // ctx.response.body = { name: user.name }
-  console.log('request-path:', ctx.request.path)
+  clog('request-path:', ctx.request.path)
   if (ctx.request.url === '/favicon.icon') {
-    console.log('qingqiu')
+    clog('qingqiu')
   }
   await next()
 })
@@ -24,5 +24,5 @@ app.use(bodyParser())
 app.use(controller())
 
 app.listen(3000, () => {
-  console.log('start')
+  clog('start')
 })

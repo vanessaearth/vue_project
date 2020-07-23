@@ -8,17 +8,17 @@ function resolve (dir) {
 function addMap (router, mapping) {
   for (let key in mapping) {
     if (!key.includes('@')) {
-      console.log('无效url:', key)
+      clog('无效url:', key)
     }
     const keyObj = key.split('@')
     const type = keyObj[0]
     const path = keyObj[1]
     if (type === 'GET') {
       router.get(path, mapping[key])
-      console.log('get:', path)
+      clog('get:', path)
     } else if (type === 'POST') {
       router.post(path, mapping[key])
-      console.log('post:', path)
+      clog('post:', path)
     }
   }
 }

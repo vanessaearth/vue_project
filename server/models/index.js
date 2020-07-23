@@ -15,7 +15,7 @@ Course.belongsToMany(User, {
 sequelize.sync().then(
   async result => {
     let user = await User.findByPk()
-    console.log('use', user)
+    clog('use', user)
     if (!user) {
       user = await User.create({
         name: 'tom',
@@ -23,7 +23,7 @@ sequelize.sync().then(
       })
     }
     app.listen(3000, () => {
-      console.log('start at 3000')
+      clog('start at 3000')
     })
   }
 )

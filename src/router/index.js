@@ -71,7 +71,7 @@ export const asyncRoutes = [
     name: 'table',
     path: '/table',
     component: () => import(/* webpackChunkName: "table" */'@/views/table'),
-    meta: { icon: 'table', title: 'table', roles: ['admin', 'editor'] }
+    meta: { icon: 'table', title: 'table封装', roles: ['admin', 'editor'] }
   },
   {
     name: 'control',
@@ -96,16 +96,6 @@ export const asyncRoutes = [
     redirect: '/user/info',
     meta: { icon: 'user', title: '用户中心', roles: ['admin'] },
     children: [
-      {
-        path: 'com',
-        name: 'com',
-        component: () => import(/* webpackChunkName: "com1" */'@/views/user/com1.vue'),
-        meta: {
-          title: '组件',
-          icon: 'com',
-          roles: ['admin']
-        }
-      },
       {
         path: 'slotDemo',
         name: 'slotDemo',

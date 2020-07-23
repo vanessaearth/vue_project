@@ -31,7 +31,7 @@ export default {
   methods: {
     show () {
       this.isShow = true
-      setTimeout(this.hide, this.duration)
+      // setTimeout(this.hide, this.duration)
     },
     hide () {
       this.isShow = false
@@ -46,4 +46,20 @@ export default {
 
 </script>
 <style lang='scss' scoped>
+.box {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    width: 400px;
+    height: 100px;
+    margin-left: -100px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    padding: 20px;
+    .title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+  }
 </style>

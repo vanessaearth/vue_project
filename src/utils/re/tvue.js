@@ -76,6 +76,6 @@ class Watcher {
   }
   update () {
     this.cb.call(this.vm, this.vm[this.key])
-    console.log(`${this.key}属性更新了`)
+    clog(`${this.key}属性更新了`)
   }
 }

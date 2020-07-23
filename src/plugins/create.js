@@ -6,7 +6,7 @@ export function create (Component, props) {
   // 收到追加到dom
   document.body.appendChild(vm.$el)
   // 组件实例
-  console.log('ctor----', ctor)
+  clog('ctor----', ctor)
   // 淘汰机制，定时删除dom
   ctor.remove = () => {
     document.body.removeChild(vm.$el)

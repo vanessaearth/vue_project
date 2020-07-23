@@ -3,7 +3,7 @@ const fs = require('fs')
 const path = require('path')
 let userList = async (ctx, next) => {
   const user = await User.findAll()
-  console.log('user:', user)
+  clog('user:', user)
   ctx.response.body = user
 }
 
@@ -17,14 +17,14 @@ let login = async (ctx, next) => {
 }
 let index = async (ctx, next) => {
   const index = await fs.readFileSync(path.resolve(__dirname, '../dist/index.html'), 'utf-8', (err, data) => {
-    console.log('err:', err)
+    clog('err:', err)
   })
-  // console.log('file:', index)
+  // clog('file:', index)
   ctx.response.body = index
 }
 let signIn = async (ctx, next) => {
   var name = ctx.request.body.name || ''
-  console.log('name:', ctx.request.body)
+  clog('name:', ctx.request.body)
   if (name === 'tom') {
     ctx.response.body = 'welcome,' + name
   } else {

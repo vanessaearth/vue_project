@@ -48,80 +48,38 @@
                      @click="download">下载</el-button>
         </div>
       </div>
-      <el-table :data="tableData"
-                @sort-change="tableSort"
-                class="table-template"
-                @selection-change="handleSelectionChange"
-                style="width: 100%">
-        <el-table-column type="selection"
-                         width="55">
-        </el-table-column>
-        <el-table-column prop="date"
-                         label="日期"
-                         sortable
-                         :sort-orders="['ascending', 'descending']"
-                         width="180">
-        </el-table-column>
-        <el-table-column prop="status"
-                         label="状态"
-                         :formatter="formatStatus"
-                         sortable
-                         :sort-orders="['ascending', 'descending']"
-                         width="180">
-        </el-table-column>
-        <el-table-column prop="name"
-                         label="姓名"
-                         width="180">
-          <template slot-scope="{row}">
-            <el-popover trigger="hover"
-                        placement="top">
-              <p>姓名: {{ row.name }}</p>
-              <p>住址: {{ row.address }}</p>
-              <div slot="reference"
-                   class="name-wrapper">
-                <el-tag size="medium">{{ row.name }}</el-tag>
-              </div>
-            </el-popover>
-          </template>
-        </el-table-column>
-        <el-table-column prop="address"
-                         label="地址">
-          <template slot-scope="{row}">
-            <div v-if="editId!==row.id">
-              <i class="icon ic-edit green"
-                 @click="changeTag(row)"></i>
-
-              {{row.address}}
+      <my-table :columns="columns"
+                :tableData="tableData"
+                @reloadData="getAllData"
+                @tableSort="tableSort"
+                :ipagiation="ipagiation">
+        <template v-slot:name="{row}">
+          <el-popover trigger="hover"
+                      placement="top">
+            <p>姓名: {{ row.name }}</p>
+            <p>住址: {{ row.address }}</p>
+            <div slot="reference"
+                 class="name-wrapper">
+              <el-tag size="medium">{{ row.name }}</el-tag>
             </div>
-            <el-input size="mini"
-                      :ref="`address${row.id}`"
-                      v-show="editId===row.id"
-                      v-model="editAddress"
-                      @focus="inputFocus($event)"
-                      @blur="cancelEditCell($event)"
-                      @keyup.enter.native="updateAddressMethod(row,'address')"></el-input>
-          </template>
-        </el-table-column>
-      </el-table>
-      <el-pagination @size-change="handleSizeChange"
-                     @current-change="handleCurrentChange"
-                     :current-page.sync="filterParams.pageNum"
-                     :page-size="filterParams.pageSize"
-                     :page-sizes="[10,20,50,100]"
-                     layout="total, sizes, prev, pager, next, jumper"
-                     :total="total"
-                     class="paging-box">
-      </el-pagination>
+          </el-popover>
+        </template>
+        <template v-slot:address="{row}">
+          {{row.address}}
+        </template>
+      </my-table>
     </div>
 
   </div>
 </template>
 
 <script>
-import util from '@/utils/index'
+import myTable from '@/components/table/myTable.vue'
+import { downloadBlobFile } from '@/utils/modules/downloadFile.js'
+import { filterNullParams } from '@/utils/modules/filterNullParams.js'
 export default {
   name: 'tabelPage',
-  components: {},
+  components: { myTable },
   data () {
     return {
       // 编辑地址参数
@@ -133,9 +91,7 @@ export default {
         nameList: [],
         statusList: [],
         orderBy: 'Date',
-        sequence: 'desc',
-        pageNum: 1,
-        pageSize: 10
+        sequence: 'desc'
       },
       // 远程查找下拉值
       filterOption: {
@@ -144,24 +100,68 @@ export default {
       // table数据
       total: 0,
       tableData: [],
-      tableLoading: false
+      tableLoading: false,
+      ipagiation: {
+        pageNum: 1,
+        pageSize: 10,
+        total: 0
+      },
+      columns: [
+        {
+          prop: 'date',
+          label: '日期',
+          sortable: true,
+          width: 180,
+          slotScope: true
+        },
+        {
+          prop: 'status',
+          label: '状态',
+          sortable: true,
+          width: 100,
+          formatter: (row) => {
+            let type = ''
+            if (row.status === 'online') {
+              type = '上线'
+            } else if (row.status === 'offline') {
+              type = '下线'
+            }
+            return type
+          }
+        }, {
+          prop: 'name',
+          label: '姓名',
+          sortable: true,
+          width: 100,
+          slot: 'name'
+        },
+        {
+          prop: 'address',
+          label: 'address',
+          sortable: true,
+          width: 300,
+          slot: 'address'
+        }
+      ]
     }
   },
   props: {},
   computed: {},
   methods: {
-    // table排序
-    tableSort ({ column, prop, order }) {
-      if (order === 'descending') {
-        order = 'desc'
-      } else {
-        order = 'asc'
-      }
-      this.filterParams.pageNum = 1
-      this.filterParams.orderBy = prop
-      this.filterParams.sequence = order
-      clog('table默认排序')
+    tableSort (params) {
+      this.filterParams.orderBy = params.orderBy
+      this.filterParams.sequence = params.sequence
       this.getAllData()
+    },
+    getAllData (isFirstPage) {
+      if (isFirstPage) {
+        this.ipagiation.pageNum = 1
+      }
+      let params = filterNullParams({ ...this.filterParams, ...this.ipagiation })
+      this.$axios.post('/getTableData', params).then(res => {
+        this.tableData = res.list
+        this.ipagiation.total = res.total
+      })
     },
     // 编辑地址
     changeTag (row) {
@@ -185,7 +185,6 @@ export default {
       }
       let path = `/${type}/update`
       this.tableLoading = true
-
       this.axios.post(path, params).then(res => {
         this.getAllData()
       }).finally(res => {
@@ -193,16 +192,6 @@ export default {
         this.editAddress = ''
         this.tableLoading = false
       })
-    },
-    // 格式化table中status
-    formatStatus (row) {
-      let type = ''
-      if (row.status === 'online') {
-        type = '上线'
-      } else if (row.status === 'offline') {
-        type = '下线'
-      }
-      return type
     },
     // 远程搜索名字
     remoteName (key, type) {
@@ -217,42 +206,12 @@ export default {
     handleSelectionChange (e) {
 
     },
-    handleSizeChange (e) {
-      this.filterParams.pageNum = 1
-      this.filterParams.pageSize = e
-      this.getAllData()
-    },
-    handleCurrentChange (e) {
-      this.filterParams.pageNum = e
-      this.getAllData()
-    },
     search () {
-      this.filterParams.pageNum = 1
-      this.getAllData()
+      this.getAllData(true)
     },
     download () {
       this.$axios.get('/download/table', {}).then(res => {
-        const blob = new Blob([res])
-        const fileName = `downloadName.xls`
-        if ('download' in document.createElement('a')) { // 非IE下载
-          const elink = document.createElement('a')
-          elink.download = fileName
-          elink.style.display = 'none'
-          elink.href = URL.createObjectURL(blob)
-          document.body.appendChild(elink)
-          elink.click()
-          URL.revokeObjectURL(elink.href)
-          document.body.removeChild(elink)
-        } else { // IE10+下载
-          navigator.msSaveBlob(blob, fileName)
-        }
-      })
-    },
-    getAllData () {
-      let params = util.filterNullParams(this.filterParams)
-      this.$axios.post('/getTableData', params).then(res => {
-        this.tableData = res.list
-        this.total = res.total
+        downloadBlobFile(res)
       })
     }
   },

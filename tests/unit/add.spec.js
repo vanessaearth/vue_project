@@ -26,7 +26,7 @@ describe('add组件测试', () => {
   })
 })
 
-// console.log 测试的原型
+// clog 测试的原型
 // 我们把console做的体系化，保存下来，没事就跑一下
-// console.log(Add(1, 2) === 3)
+// clog(Add(1, 2) === 3)
 //  一些辅助函数

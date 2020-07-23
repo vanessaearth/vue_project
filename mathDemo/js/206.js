@@ -1,6 +1,6 @@
 function Node (val) {
-  this.val = val;
-  this.next = null;
+  this.val = val
+  this.next = null
 }
 function LinkNode () {
   this.head = null
@@ -35,6 +35,6 @@ var reverseList = function (head) {
       linkNode.append(arr[i])
     }
   }
-  console.log(linkNode)
-};
+  clog(linkNode)
+}
 reverseList('1->2->3->4->5->NULL')

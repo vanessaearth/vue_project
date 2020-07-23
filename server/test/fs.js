@@ -2,20 +2,20 @@ const fs = require('fs')
 function get (key) {
   fs.readFile('./db.json', (err, data) => {
     const json = JSON.parse(data)
-    console.log(json[key], 'get-err', err)
+    clog(json[key], 'get-err', err)
   })
 }
 function set (key, value) {
   fs.readFile('./db.json', (err, data) => {
-    console.log('set-err:', err)
+    clog('set-err:', err)
     // 空文件
     const json = data ? JSON.parse(data) : {}
     json[key] = value
     fs.writeFile('./db.json', JSON.stringify(json), err => {
       if (err) {
-        console.log(err)
+        clog(err)
       } else {
-        console.log('写入成功')
+        clog('写入成功')
       }
     })
   })
@@ -35,11 +35,11 @@ rl.on('line', function (input) {
   } else if (op === 'quit') {
     rl.close()
   } else {
-    console.log('没有操作')
+    clog('没有操作')
   }
 })
 rl.on('close', function () {
-  console.log('程序接受')
+  clog('程序接受')
   process.exit()
 })
 // set user { name: 'jerry' }

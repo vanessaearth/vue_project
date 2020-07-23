@@ -7,7 +7,7 @@ function twoSum (arr, sum) {
     needArr.push(sum - arr[i])
     if (arr[i] in need || needArr.includes(arr[i])) {
       result2 = [i, need[arr[i]]]
-      console.log(result2)
+      clog(result2)
       result.push({ 'num1': arr[i], 'num2': sum - arr[i] })
     } else {
       need[sum - arr[i]] = i
@@ -22,7 +22,7 @@ function twoSum2 (arr, sum) {
     for (let j = i + 1; j < len; j++) {
       if (arr[i] + arr[j] === sum) {
         result.push({ 'num1': arr[i], 'num2': arr[j] })
-        console.log(arr[i], arr[j])
+        clog(arr[i], arr[j])
       }
     }
   }
@@ -65,7 +65,7 @@ function zhan (s) {
 }
 function fileCli (path) {
   let arr = path.split('/').filter(Boolean)
-  console.log(arr)
+  clog(arr)
   let len = arr.length
   let result = []
   for (let i = 0; i < len; i++) {

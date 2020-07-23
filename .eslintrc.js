@@ -20,7 +20,7 @@ module.exports = {
   },
   globals: {
     'axios': true,
-    'clog': false // 全局配置不检查clog
+    'clog': true // 全局配置不检查clog
   },
   overrides: [
     {

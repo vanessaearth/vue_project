@@ -12,7 +12,7 @@ Vue.use(ElementUI)
 Vue.config.productionTip = false
 
 if (process.env.NODE_ENV !== 'production') {
-  window.clog = window.console.log
+  window.clog = window.clog
 } else {
   window.clog = () => { }
 }

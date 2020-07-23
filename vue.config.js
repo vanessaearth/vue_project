@@ -1,14 +1,11 @@
 
 // import bodyParse from 'body-parse'
 const port = 9090
-const title = '欢迎来到我的博客站'
 const path = require('path')
-
-console.log('foo:',process.env.foo)
 module.exports = {
-  publicPath: '/start',
-  assetsDir: 'static',
-  outputDir: process.env.VUE_APP_OUTPUT,
+  // publicPath: '/start',
+  // assetsDir: 'static', //设置css,js,img等在static文件中
+  // outputDir: process.env.VUE_APP_OUTPUT,
   // publicPath: '/demo',
   // 多入口文件配置
   // pages: {
@@ -52,7 +49,7 @@ module.exports = {
         '@': path.join(__dirname, 'src')
       }
     },
-    name: process.env.NODE_ENV === 'development' ? '测试' : '正式'
+    name: process.env.NODE_ENV === 'development' ? '测试-欢迎来到我的博客站' : '正式-欢迎来到我的博客站'
   },
   chainWebpack (config) {
     // 设置svgIcon的loader

@@ -154,7 +154,7 @@ export default {
     },
     async asyncGetData () {
       const res = await this.$axios.get('/device/track_detail')
-      console.log('res:', res)
+      clog('res:', res)
       const markerLatLng = []
       res[0].alarm_points.forEach(v => {
         markerLatLng.push({
@@ -481,5 +481,4 @@ export default {
     }
   }
 }
-
 </style>

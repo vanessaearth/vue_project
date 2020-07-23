@@ -5,9 +5,9 @@ function add (a, b) {
 function test (title, fn) {
   try {
     fn()
-    console.log(title, '测试通过')
+    clog(title, '测试通过')
   } catch (e) {
-    console.log(e)
+    clog(e)
     console.error(title, '测试失败')
   }
 }
@@ -16,7 +16,7 @@ function expect (ret) {
 
     toBe (arg) {
       if (ret === arg) {
-        console.log('测试通过')
+        clog('测试通过')
       } else {
         throw Error(`测试不通过，期望${arg},实际${ret}`)
       }
