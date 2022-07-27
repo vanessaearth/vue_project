@@ -17,7 +17,7 @@ export const constRoutes = [
     hidden: true,
     path: '/',
     name: 'home',
-    component: () => import(/* webpackChunkName: "home" */'@/views/home.vue'),
+    component: () => import(/* webpackChunkName: "home" */'@/views/Home.vue'),
     meta: {
       isHideLayout: true
     }
@@ -118,6 +118,15 @@ export const asyncRoutes = [
       }
 
     ]
+  }, {
+    path: '/banner',
+    name: 'banner',
+    component: () => import(/* webpackChunkName: "banner" */'@/views/banner.vue'),
+    meta: {
+      title: 'banner',
+      icon: 'banner',
+      roles: ['admin']
+    }
   }
 ]
 
