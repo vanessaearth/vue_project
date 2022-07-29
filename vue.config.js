@@ -2,6 +2,7 @@
 // import bodyParse from 'body-parse'
 const port = 9090
 const path = require('path')
+const resolve = (dir) => path.join(__dirname, dir);
 module.exports = {
   // publicPath: '/start',
   // assetsDir: 'static', //设置css,js,img等在static文件中
@@ -35,12 +36,18 @@ module.exports = {
     // }
 
   },
-  css: {
-    loaderOptions: {
-      sass: {
-        prependData: `@import "~@/assets/scss/variables.scss";`
-      }
-    }
+  // css: {
+  //   loaderOptions: {
+  //     sass: {
+  //       prependData: `@import "~@/assets/scss/variables.scss";`
+  //     }
+  //   }
+  // },
+  pluginOptions: {
+    "style-resources-loader": {
+      preProcessor: "scss",
+      patterns: [resolve("~@/assets/scss/_variables.scss")],
+    },
   },
   // 配置webpack
   configureWebpack: {
