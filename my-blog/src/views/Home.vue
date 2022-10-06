@@ -1,6 +1,7 @@
 <!--  -->
 <template>
   <div>
+
     <HeaderLogo></HeaderLogo>
     <div class="container-layout add-box layout">
       <div class="fs32">
@@ -17,7 +18,9 @@
                    plain>{{item}}</ElButton>
       </div>
     </div>
-
+  <input type="text" v-model="uname"/>
+    <input type="text" v-model="pwd"/>
+    <ElButton @click="click">click</ElButton>
   </div>
 </template>
 
@@ -28,6 +31,8 @@ export default {
   components: { HeaderLogo },
   data () {
     return {
+      uname: '',
+      pwd: '',
       message: 'data msg',
       labelData: [
         'Vue',
@@ -54,7 +59,14 @@ export default {
   methods: {
     changeMsg () {
       this.message = '按钮点击'
+    },
+    async click () {
+      const res = await this.$axios.post('/api/accounts/signup', { username: this.uname, password: this.pwd })
+      if (res) {
+        this.filterOptions.channel = res
+      }
     }
+
   },
   watch: {},
   created () {

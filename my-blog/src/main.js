@@ -11,6 +11,7 @@ import './icons/index'
 import './plugins/axios'
 import './plugins/element.js'
 import './assets/scss/common.scss'
+import Canvas from '@/utils/canvas'
 console.log('process.env.NODE_ENV', process.env.NODE_ENV)
 if (process.env.NODE_ENV !== 'production') {
   require('./mock/index.js')
@@ -24,8 +25,15 @@ Vue.prototype.$bus = new Bus()
 Vue.prototype.$create = create
 Vue.config.productionTip = false
 Vue.directive('permission', vp)
-new Vue({
+
+const app = new Vue({
+  data () {
+    return {
+      canvas: new Canvas()
+    }
+  },
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
+Vue.prototype.$canvas = app.canvas

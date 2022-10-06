@@ -32,7 +32,7 @@ module.exports = defineConfig({
         secure: true
       },
       '/api': {
-        target: 'XXX',
+        target: 'http://localhost:8989',
         changeOrigin: true,
         secure: true
       }

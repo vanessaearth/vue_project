@@ -50,7 +50,8 @@ export const asyncRoutes = [
     path: '/fileUpload',
     component: () => import(/* webpackChunkName: "fileUpload" */'@/views/fileUpload')
     // meta: { icon: 'file', title: '文件上传', roles: ['admin', 'editor'] }
-  }, {
+  },
+  {
     //   name: '/userList',
     //   path: '/userList',
     //   component: () => import(/* webpackChunkName: "chart" */'@/views/userList'),
@@ -79,16 +80,7 @@ export const asyncRoutes = [
     component: () => import(/* webpackChunkName: "control" */'@/views/control'),
     meta: { icon: 'permission', title: '权限控制', roles: ['admin', 'editor'] }
   },
-  {
-    path: '/jestDemo',
-    name: 'jestDemo',
-    component: () => import(/* webpackChunkName: "jestDemo" */'@/views/jestDemo.vue'),
-    meta: {
-      title: 'Jest测试',
-      icon: 'slot',
-      roles: ['admin']
-    }
-  },
+
   {
     path: '/user',
     name: 'user',
@@ -115,6 +107,16 @@ export const asyncRoutes = [
           icon: 'vuex',
           roles: ['admin']
         }
+      },
+      {
+        path: '/jestDemo',
+        name: 'jestDemo',
+        component: () => import(/* webpackChunkName: "jestDemo" */'@/views/jestDemo.vue'),
+        meta: {
+          title: 'Jest测试',
+          icon: 'slot',
+          roles: ['admin']
+        }
       }
 
     ]
@@ -127,7 +129,28 @@ export const asyncRoutes = [
       icon: 'banner',
       roles: ['admin']
     }
+  },
+  {
+    path: '/lower',
+    name: 'lower',
+    component: () => import(/* webpackChunkName: "lower" */ '../views/lower/index.vue'),
+    meta: {
+      title: 'lower',
+      icon: 'lower',
+      roles: ['admin', 'editor']
+    }
+  }, {
+    path: '/lowerH5',
+    name: 'lowerH5',
+    hidden: true,
+    component: () => import(/* webpackChunkName: "lowerH5" */ '../views/lowerH5/index.vue'),
+    meta: {
+      title: 'lowerH5',
+      icon: 'lowerH5',
+      roles: ['admin', 'editor']
+    }
   }
+
 ]
 
 export default new Router({
